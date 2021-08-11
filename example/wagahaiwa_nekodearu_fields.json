@@ -1,0 +1,16 @@
+{
+    "fields":[
+    {
+      "name":"content",
+      "type":"text_ja",
+      "uninvertible":true,
+      "indexed":true,
+      "required":true,
+      "stored":true},
+    {
+      "name":"date",
+      "type":"pdate",
+      "uninvertible":true,
+      "indexed":true,
+      "required":true,
+      "stored":true}]}
