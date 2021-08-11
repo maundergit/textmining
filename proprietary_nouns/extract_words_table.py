@@ -35,6 +35,9 @@ def init():
     arg_parser = argparse.ArgumentParser(description="語句テーブルを生成する",
                                          formatter_class=argparse.RawDescriptionHelpFormatter,
                                          epilog=textwrap.dedent('''
+remark:
+  PYTHONPATH must be defined as path of directory where threr is 'textmining_lib.py'.
+
 example:
 
 '''))
