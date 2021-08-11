@@ -40,7 +40,7 @@ git cloneでダウンロードした後に、環境変数PYTHONPATHに、textmin
 
 
 ```bash
-git clone
+git clone git@github.com:maundergit/textmining.git
 export PYTHONPATH=$(pwd)/textming:${PYTHONPATH}
 export PATH=$(pwd)/textming:${PATH}
 ```
