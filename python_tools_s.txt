@@ -1,0 +1,309 @@
+
+
+-- csv_text_normalize.py
+usage: csv_text_normalize.py [-h] [-v]
+                             [--unicode_normalized_mode {NFD,NFC,NFCD,NFKC}]
+                             [--with_neologdn] [--for_mecab FOR_MECAB]
+                             [--without_kansuji] [--no_header] [--quote_all]
+                             [--include_columns COLUMNS[,COLUMNS,[COLUMNS,...]]]
+                             [--exclude_columns COLUMNS[,COLUMNS,[COLUMNS,...]]]
+                             [--include_pattern REGEX]
+                             [--exclude_pattern REGEX] [--output STR]
+                             FILE
+
+positional arguments:
+  FILE                  files to read, if empty, stdin is used
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  --unicode_normalized_mode {NFD,NFC,NFCD,NFKC}
+                        mode of unicode normalization, default=NFKC
+  --with_neologdn       processing with neologdn
+  --for_mecab FOR_MECAB
+                        MECABで記号とする半角記号文字列,ex:'()[]{}'
+  --without_kansuji     漢数字の半角数字への変換を行わない
+  --no_header           一行目からデータとして処理する
+  --quote_all           全カラムをQuoteする
+  --include_columns COLUMNS[,COLUMNS,[COLUMNS,...]]
+                        names of colunmns to process, default=all
+  --exclude_columns COLUMNS[,COLUMNS,[COLUMNS,...]]
+                        names of colunmns to exclude
+  --include_pattern REGEX
+                        name pattern of colunmns to process
+  --exclude_pattern REGEX
+                        name pattern of colunmns to exclude
+  --output STR          path of output, default is stdout
+
+-- csv_text_solr.py
+usage: csv_text_solr.py [-h] [-v] [--init_sample] [--host IP_ADDRESS]
+                        [--port PORT] --core NAME [--key COLUMN]
+                        [--column_map COLUMN:FIELD[,COLUMN:FIELD...]]
+                        [--auto_add_fields] [--add_fields JSON_FILE]
+                        [--show_fields_information]
+                        [--fields_type FIELD:TYPE[,FIELD:TYPE..]]
+                        [--datetime_format datetime_format]
+                        [--extend_columns FIELD[,FIELD..]]
+                        [--user_dictionary FILE] [--minmum_length_of_word INT]
+                        [--remove_words WORDS[,WORD,...]]
+                        [--remove_pattern REGEX_OR_FILE]
+                        [--replace_pattern_file FILE]
+                        [--extend_word_file FILE]
+                        [--retrieve_terms_status FIELD]
+                        [--analysis_terms ANA_TERMS]
+                        [CSV_FILE [CSV_FILE ...]]
+
+positional arguments:
+  CSV_FILE              csv files to read. if empty, stdin is used
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  --init_sample         make sample script and definition of fields
+  --host IP_ADDRESS     ip address of host, default=127.0.0.1
+  --port PORT           port number, default=8983
+  --core NAME           name of core of solr
+  --key COLUMN          name of column as key
+  --column_map COLUMN:FIELD[,COLUMN:FIELD...]
+                        mapping table between column and field
+  --auto_add_fields     to add fields, that are in column map but not in solr,
+                        when '--column_map' is used..
+  --add_fields JSON_FILE
+                        path of json file to define fields
+  --show_fields_information
+                        retrieve information of fields
+  --fields_type FIELD:TYPE[,FIELD:TYPE..]
+                        list of type of each field, those was used to convert
+                        data type when adding ones to solr.
+  --datetime_format datetime_format
+                        format of datetime in columns whose type is 'pdate' in
+                        '--fields_type', default='%Y-%m-%d %H:%M:%S'
+  --extend_columns FIELD[,FIELD..]
+                        decompose sentence and extend words
+  --user_dictionary FILE
+                        path of user dictionary
+  --minmum_length_of_word INT
+                        minimum length of word, default=2
+  --remove_words WORDS[,WORD,...]
+                        list of words to remove, default='。,、,？,.,\,,?'
+  --remove_pattern REGEX_OR_FILE
+                        regex pattern to remove before analyzing or file
+  --replace_pattern_file FILE
+                        path of file that has regex pattern to replace before
+                        analyzing
+  --extend_word_file FILE
+                        path of file that has regex pattern and word to add at
+                        deriving words
+  --retrieve_terms_status FIELD
+                        retrieve df(docFreq) and ttf(totalTermFreq) about
+                        terms from solr, top100, with csv format
+  --analysis_terms ANA_TERMS
+                        retrieve analyzed result for string
+
+-- csv_text_solr_search.py
+usage: csv_text_solr_search.py [-h] [-v] [--host IP_ADDRESS] [--port PORT]
+                               --core NAME [--extend_columns FIELD[,FIELD..]]
+                               [--user_dictionary FILE]
+                               [--minmum_length_of_word INT]
+                               [--remove_words WORDS[,WORD,...]]
+                               [--remove_pattern REGEX_OR_FILE]
+                               [--replace_pattern_file FILE]
+                               [--extend_word_file FILE]
+                               [--search STR [STR ...]] [--search_field FIELD]
+                               [--search_ex STR [STR ...]]
+                               [--search_limit INT]
+                               [--search_operator {OR,AND}]
+                               [--search_detail FIELD:KEYWORD[,FIELD:KEYWORD..]]
+                               [--search_detail_file FILE]
+                               [--search_output CSV_FILE]
+                               [CSV_FILE [CSV_FILE ...]]
+
+positional arguments:
+  CSV_FILE              csv files to read. if empty, stdin is used
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  --host IP_ADDRESS     ip address of host, default=127.0.0.1
+  --port PORT           port number, default=8983
+  --core NAME           name of core of solr
+  --extend_columns FIELD[,FIELD..]
+                        decompose sentence and extend words
+  --user_dictionary FILE
+                        path of user dictionary
+  --minmum_length_of_word INT
+                        minimum length of word, default=2
+  --remove_words WORDS[,WORD,...]
+                        list of words to remove, default='。,、,？,.,\,,?'
+  --remove_pattern REGEX_OR_FILE
+                        regex pattern to remove before analyzing or file
+  --replace_pattern_file FILE
+                        path of file that has regex pattern to replace before
+                        analyzing
+  --extend_word_file FILE
+                        path of file that has regex pattern and word to add at
+                        deriving words
+  --search STR [STR ...]
+                        sentence(s) to search
+  --search_field FIELD  field to search
+  --search_ex STR [STR ...]
+                        sentence(s) to search with exntending by '--
+                        user_ditctionary','--remove_words','--
+                        remove_pattern','--replace_pattern_File','--
+                        extended_word_file'
+  --search_limit INT    limit of search results, default=50
+  --search_operator {OR,AND}
+                        operator to search, default='OR'
+  --search_detail FIELD:KEYWORD[,FIELD:KEYWORD..]
+                        detail search for each field
+  --search_detail_file FILE
+                        path of file that have detail search queriesfor each
+                        field
+  --search_output CSV_FILE
+                        path of csv file to store result, default=stdout
+
+-- csv_text_tfidf.py
+usage: csv_text_tfidf.py [-h] [-v] [--index COLUMN]
+                         [--additional_columns COLUMN[,COLUMN...]]
+                         [--user_dictionary FILE]
+                         [--minmum_length_of_word INT]
+                         [--remove_words WORDS[,WORD,...]]
+                         [--remove_pattern REGEX_OR_FILE]
+                         [--replace_pattern_file FILE]
+                         [--extend_word_file FILE]
+                         [--output_mode {simple,json,dot}] [--only_learn FILE]
+                         [--model_file FILE]
+                         [--sequential_learn IN_FILE,OUT_FILE]
+                         [--dot_cut_off FLOAT] [--check_frequency FLOAT]
+                         [--use_tf] [--use_idf] [--status] [--debug]
+                         FILE COLUMN
+
+positional arguments:
+  FILE                  csv file to read, if empty, stdin is used
+  COLUMN                column nameto process
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  --index COLUMN        column name for index, default=row number
+  --additional_columns COLUMN[,COLUMN...]
+                        list of column names for additional columns into
+                        simlarity table, default=None
+  --user_dictionary FILE
+                        path of user dictionary
+  --minmum_length_of_word INT
+                        minimum length of word, default=2
+  --remove_words WORDS[,WORD,...]
+                        list of words to remove, default='。,、,？,.,\,,?'
+  --remove_pattern REGEX_OR_FILE
+                        regex pattern to remove before analyzing or file
+  --replace_pattern_file FILE
+                        path of file that has regex pattern to replace before
+                        analyzing
+  --extend_word_file FILE
+                        path of file that has regex pattern and word to add at
+                        deriving words
+  --output_mode {simple,json,dot}
+                        format of output, default=simple
+  --only_learn FILE     path of file to store model
+  --model_file FILE     path of file to load model
+  --sequential_learn IN_FILE,OUT_FILE
+                        path of file that has result of learned model and new
+                        one
+  --dot_cut_off FLOAT   threshold for cutting off, only available with '--
+                        output_mode=dot'
+  --check_frequency FLOAT
+                        ratio for checking frequency of words, only available
+                        with '--debug', default=0.2
+  --use_tf              use term frequency
+  --use_idf             use inverse document frequency
+  --status              print status
+  --debug               debug mode
+
+-- ja_depndency_analysis.py
+usage: ja_depndency_analysis.py [-h] [-v] [--word WORD] [--read_csv] [--print]
+                                [--print_svg SVG_FILE] [--print_dot DOT_FILE]
+                                [--print_subject TEXT_FILE] [--output FILE]
+                                FILE
+
+positional arguments:
+  FILE                  file to read
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  --word WORD           word to make dependency
+  --read_csv            read csv file as analized result
+  --print               printdisplacy as text
+  --print_svg SVG_FILE  path of displacy as svg
+  --print_dot DOT_FILE  path of displacy as dot
+  --print_subject TEXT_FILE
+                        path of subject/dependency
+  --output FILE         path of output csv :default=stdout
+
+-- extract_words_table.py
+usage: extract_words_table.py [-h] [-v] [--sort COLUMN]
+                              [--user_dict DCITIONARY]
+                              [--unicode_normalized_mode {NFD,NFC,NFCD,NFKC}]
+                              [--with_neologdn] [--for_mecab FOR_MECAB]
+                              [--without_kansuji] [--output FILE]
+                              [FILE [FILE ...]]
+
+語句テーブルを生成する
+
+positional arguments:
+  FILE                  files to read, if empty, stdin is used
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  --sort COLUMN         column name to sort
+  --user_dict DCITIONARY
+                        path of user dictionary
+  --unicode_normalized_mode {NFD,NFC,NFCD,NFKC}
+                        mode of unicode normalization, default=NFKC
+  --with_neologdn       processing with neologdn
+  --for_mecab FOR_MECAB
+                        MECABで記号とする半角記号文字列,ex:'()[]{}'
+  --without_kansuji     漢数字の半角数字への変換を行わない
+  --output FILE         path of output file : default=stdout
+
+-- make_mecab_dict.py
+usage: make_mecab_dict.py [-h] [-v] [--pos1 COLUMN] [--user_dict DCITIONARY]
+                          [--header]
+                          FILE COLUMN COLUMN
+
+positional arguments:
+  FILE                  files to read, if empty, stdin is used
+  COLUMN                column name for word
+  COLUMN                column name for yomigana
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  --pos1 COLUMN         column name for part of speech subdivision
+  --user_dict DCITIONARY
+                        path of user dictionary
+  --header              with column header
+
+-- search_propr_nouns.py
+usage: search_propr_nouns.py [-h] [-v] [--output FILE] [--with_symbol]
+                             [--with_number] [--start_with_number]
+                             [--user_dict DCITIONARY]
+                             [FILE [FILE ...]]
+
+名詞が連続するものを固有名詞の候補として抽出する。
+
+positional arguments:
+  FILE                  files to read, if empty, stdin is used
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  --output FILE         path of output file : default=stdout
+  --with_symbol         treating symbol as word
+  --with_number         treating numbr as word
+  --start_with_number   treating word starting with number
+  --user_dict DCITIONARY
+                        path of user dictionary
+

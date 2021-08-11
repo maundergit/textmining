@@ -1,0 +1,94 @@
+
+
+-- csv_text_normalize.py
+usage: csv_text_normalize.py [-h] [-v]
+                             [--unicode_normalized_mode {NFD,NFC,NFCD,NFKC}]
+                             [--with_neologdn] [--for_mecab FOR_MECAB]
+                             [--without_kansuji] [--no_header] [--quote_all]
+                             [--include_columns COLUMNS[,COLUMNS,[COLUMNS,...]]]
+                             [--exclude_columns COLUMNS[,COLUMNS,[COLUMNS,...]]]
+                             [--include_pattern REGEX]
+                             [--exclude_pattern REGEX] [--output STR]
+                             FILE
+
+-- csv_text_solr.py
+usage: csv_text_solr.py [-h] [-v] [--init_sample] [--host IP_ADDRESS]
+                        [--port PORT] --core NAME [--key COLUMN]
+                        [--column_map COLUMN:FIELD[,COLUMN:FIELD...]]
+                        [--auto_add_fields] [--add_fields JSON_FILE]
+                        [--show_fields_information]
+                        [--fields_type FIELD:TYPE[,FIELD:TYPE..]]
+                        [--datetime_format datetime_format]
+                        [--extend_columns FIELD[,FIELD..]]
+                        [--user_dictionary FILE] [--minmum_length_of_word INT]
+                        [--remove_words WORDS[,WORD,...]]
+                        [--remove_pattern REGEX_OR_FILE]
+                        [--replace_pattern_file FILE]
+                        [--extend_word_file FILE]
+                        [--retrieve_terms_status FIELD]
+                        [--analysis_terms ANA_TERMS]
+                        [CSV_FILE [CSV_FILE ...]]
+
+-- csv_text_solr_search.py
+usage: csv_text_solr_search.py [-h] [-v] [--host IP_ADDRESS] [--port PORT]
+                               --core NAME [--extend_columns FIELD[,FIELD..]]
+                               [--user_dictionary FILE]
+                               [--minmum_length_of_word INT]
+                               [--remove_words WORDS[,WORD,...]]
+                               [--remove_pattern REGEX_OR_FILE]
+                               [--replace_pattern_file FILE]
+                               [--extend_word_file FILE]
+                               [--search STR [STR ...]] [--search_field FIELD]
+                               [--search_ex STR [STR ...]]
+                               [--search_limit INT]
+                               [--search_operator {OR,AND}]
+                               [--search_detail FIELD:KEYWORD[,FIELD:KEYWORD..]]
+                               [--search_detail_file FILE]
+                               [--search_output CSV_FILE]
+                               [CSV_FILE [CSV_FILE ...]]
+
+-- csv_text_tfidf.py
+usage: csv_text_tfidf.py [-h] [-v] [--index COLUMN]
+                         [--additional_columns COLUMN[,COLUMN...]]
+                         [--user_dictionary FILE]
+                         [--minmum_length_of_word INT]
+                         [--remove_words WORDS[,WORD,...]]
+                         [--remove_pattern REGEX_OR_FILE]
+                         [--replace_pattern_file FILE]
+                         [--extend_word_file FILE]
+                         [--output_mode {simple,json,dot}] [--only_learn FILE]
+                         [--model_file FILE]
+                         [--sequential_learn IN_FILE,OUT_FILE]
+                         [--dot_cut_off FLOAT] [--check_frequency FLOAT]
+                         [--use_tf] [--use_idf] [--status] [--debug]
+                         FILE COLUMN
+
+-- ja_depndency_analysis.py
+usage: ja_depndency_analysis.py [-h] [-v] [--word WORD] [--read_csv] [--print]
+                                [--print_svg SVG_FILE] [--print_dot DOT_FILE]
+                                [--print_subject TEXT_FILE] [--output FILE]
+                                FILE
+
+-- extract_words_table.py
+usage: extract_words_table.py [-h] [-v] [--sort COLUMN]
+                              [--user_dict DCITIONARY]
+                              [--unicode_normalized_mode {NFD,NFC,NFCD,NFKC}]
+                              [--with_neologdn] [--for_mecab FOR_MECAB]
+                              [--without_kansuji] [--output FILE]
+                              [FILE [FILE ...]]
+
+語句テーブルを生成する
+
+-- make_mecab_dict.py
+usage: make_mecab_dict.py [-h] [-v] [--pos1 COLUMN] [--user_dict DCITIONARY]
+                          [--header]
+                          FILE COLUMN COLUMN
+
+-- search_propr_nouns.py
+usage: search_propr_nouns.py [-h] [-v] [--output FILE] [--with_symbol]
+                             [--with_number] [--start_with_number]
+                             [--user_dict DCITIONARY]
+                             [FILE [FILE ...]]
+
+名詞が連続するものを固有名詞の候補として抽出する。
+

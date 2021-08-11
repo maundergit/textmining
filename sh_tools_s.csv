@@ -1,0 +1,2 @@
+command name	description
+make_mecab_dict.sh	Usage: make_mecab_dict.sh [-m] csv_file user_dic_file system_dicdir
