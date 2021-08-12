@@ -82,7 +82,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [\[実験的機能\] テキスト文書の時系列データ分析(3)](https://omoitukidetukuttemiru.blogspot.com/2021/05/3.html)
 - [HTML上の語句を正規表現で検索して強調表示する(Javascript)](https://omoitukidetukuttemiru.blogspot.com/2021/06/htmljavascript.html)
 - [テキスト文書のトピックを追跡する(Timeline表示)](https://omoitukidetukuttemiru.blogspot.com/2021/06/timeline.html)
-- [SolrをPythonから使う](ttps://omoitukidetukuttemiru.blogspot.com/2021/08/solrpython.html)
+- [SolrをPythonから使う](https://omoitukidetukuttemiru.blogspot.com/2021/08/solrpython.html)
 - [SolrをPythonから使う -検索編](https://omoitukidetukuttemiru.blogspot.com/2021/08/solrpython_9.html)
 - [SolrをPythonから使う -フィールド情報の取得等](https://omoitukidetukuttemiru.blogspot.com/2021/08/solrpython_10.html)
 
