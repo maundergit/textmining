@@ -2,8 +2,6 @@
 <!-- Copyright (C) ${DYEAR} by m.na.akei   -->
 <!-- Time-stamp: "${DSTMP}" -->
 
-[TOC]
-
 # テキストマイニング用ツール #
 
 テキストマイニング用のPythonツール郡のレポジトリ、と言っても断片的なもの。
