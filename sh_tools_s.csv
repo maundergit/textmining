@@ -1,2 +1,3 @@
 command name	description
-make_mecab_dict.sh	Usage: make_mecab_dict.sh [-m] csv_file user_dic_file system_dicdir
+solr.sh	convinient command wrapper of solr
+make_mecab_dict.sh	CSV形式の辞書登録用語句リストからMecabのユーザー辞書ファイルを生成する

@@ -1,3 +1,4 @@
 command name	description
 extract_words_table.py	語句テーブルを生成する
+make_mecab_dict.py	CSV形式の語句リストからMeCab用辞書生成のためのCSVファイルを生成する
 search_propr_nouns.py	名詞が連続するものを固有名詞の候補として抽出する。

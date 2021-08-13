@@ -462,6 +462,8 @@ usage: make_mecab_dict.py [-h] [-v] [--pos1 COLUMN] [--user_dict DCITIONARY]
                           [--header]
                           FILE COLUMN COLUMN
 
+CSV形式の語句リストからMeCab用辞書生成のためのCSVファイルを生成する
+
 positional arguments:
   FILE                  files to read, if empty, stdin is used
   COLUMN                column name for word

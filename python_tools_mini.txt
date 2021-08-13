@@ -84,6 +84,8 @@ usage: make_mecab_dict.py [-h] [-v] [--pos1 COLUMN] [--user_dict DCITIONARY]
                           [--header]
                           FILE COLUMN COLUMN
 
+CSV形式の語句リストからMeCab用辞書生成のためのCSVファイルを生成する
+
 -- search_propr_nouns.py
 usage: search_propr_nouns.py [-h] [-v] [--output FILE] [--with_symbol]
                              [--with_number] [--start_with_number]
