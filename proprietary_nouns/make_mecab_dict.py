@@ -33,7 +33,7 @@ MECAB_DICT = "/var/lib/mecab/dic/ipadic-utf8"
 
 
 def init():
-    arg_parser = argparse.ArgumentParser(description="",
+    arg_parser = argparse.ArgumentParser(description="CSV形式の語句リストからMeCab用辞書生成のためのCSVファイルを生成する",
                                          formatter_class=argparse.RawDescriptionHelpFormatter,
                                          epilog=textwrap.dedent('''
 remark:

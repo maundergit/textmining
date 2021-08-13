@@ -71,7 +71,7 @@ check_commands() {
     fi
 }
 
-check_commands solr
+check_commands solr nc
 
 usage_exit() {
     cat <<EOF 2>&1
@@ -88,6 +88,10 @@ options:
   -d dir : path of directory of data, default is current directory
   -p port: port number, default=8983
            for start, unused port is automaticaly scaned.
+
+example:
+  solr.sh start  # current directory is used as directory for data of solr.
+  
 
 EOF
     exit 1

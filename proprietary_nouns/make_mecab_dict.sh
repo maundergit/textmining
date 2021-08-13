@@ -61,14 +61,20 @@ check_commands() {
 
 usage_exit() {
     cat <<EOF 2>&1
+CSV形式の辞書登録用語句リストからMecabのユーザー辞書ファイルを生成する
 Usage: $SNAME [-m] csv_file user_dic_file system_dicdir
+arguments:
+  csv_file: make_mecab_dict.py で生成された辞書登録用語句リストを持つCSVファイル
+  user_dic_file: ユーザー辞書ファイル名、上書きされるので注意
+  system_dicdit: Mecabのシステムディレクトリ
+
 options:
   -m  : use ipa model to calcurate cost
 
 remark:
   model file:
     https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7bnc5aFZSTE9qNnM
-  dic dir:
+  system dicdir:
      'mecab --dictionary-info' or 'mecab-config --dicdir'
      'sudo update-alternatives --config mecab-dictionary'
 
@@ -118,6 +124,10 @@ USERRC=~/.mecabrc
 
 if [ "${F_IPA_MODEL}" != "" ]; then
     IPA_MODEL=${DDIR}/mecab-ipadic_utf8.model
+    if [ ! -e ${IPA_MODEL} ]; then
+	echo "??error:${SNAME}: ${IPA_MODEL} was not found." 1>&2
+	exit 1
+    fi
 fi
 
 LIBEXECDIR=$(mecab-config --libexecdir)
