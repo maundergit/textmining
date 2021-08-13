@@ -17,6 +17,7 @@
 - CSV形式Mecab用辞書入力ファイルからMecab辞書を生成
 - CSV形式の日本語文書をSolrに登録、検索
 
+参照： [python_tool](python_tools.md)、[sh_tools](sh_tools.md)
 
 ## スタートガイド
 プロジェクトをローカルに複製して、検証、実行する手順を説明します
