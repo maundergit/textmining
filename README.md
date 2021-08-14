@@ -58,6 +58,10 @@ head wagahaiwa_nekodearu.csv | csv_text_tfidf.py --index date --output_mode dot 
 
 各コマンドのヘルプメッセージを [python_tool](python_tools.md)と[sh_tools](sh_tools.md)にまとめている。
 
+#### 使い方についてのガイド
+
+- [Solrの立ち上げ](SOLR_SETUP.md)
+
 
 ## 作者
 
