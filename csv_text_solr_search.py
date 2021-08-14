@@ -333,6 +333,9 @@ if __name__ == "__main__":
         print(f"??error:csv_text_solr_search:'--search_field' was defined, '--search' or '--search_ex' should be defined.",
               file=sys.stderr)
         sys.exit(1)
+    if search_sentences is not None and search_field is None:
+        print(f"??error:csv_text_solr_search:'--search' was defined, but '--search_field' was not defined.", file=sys.stderr)
+        sys.exit(1)
     if search_sentences is not None or search_ex_sentences is not None or search_detail is not None:
         if search_detail is None and search_field is None:
             print(f"??error:csv_text_solr_search:'--search_field' was required.", file=sys.stderr)
