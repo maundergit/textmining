@@ -445,25 +445,54 @@ def init_solr(solr_core_name: str):
     def_file_name = "solr-fields.json"
     sh_str = f"""
 #/bin/bash
+SNAME=$(basename $0)
 
-# -- following environment must be defined.
-SOLR_DATADIR=
+# ==========================================
+# -- following environments must be defined.
+# there are bin/solr in SOLR_HOME.
 SOLR_HOME=
+
+# directory for indexed data
+SOLR_DATADIR=
+
+# name of core
 SOLR_CORE_NAME={solr_core_name}
+
 # --
+# ==========================================
+
+if [ "${{SOLR_HOME}}" = "" -o ! -e "${{SOLR_HOME}}" ]; then
+   echo "??error:${{SNAME}}: SOLR_HOME must be defined." 1>&2
+   exit 1
+fi
+if [ "${{SOLR_DATADIR}}" = "" -o ! -e "${{SOLR_DATADIR}}" ]; then
+   echo "??error:${{SNAME}}: SOLR_DATADIR must be defined." 1>&2
+   exit 1
+fi
 
 if [ ! -e ${{SOLR_DATADIR}} ]; then
     mkdir  ${{SOLR_DATADIR}}
 fi
+
+trap "exit 1" ERR
+
+echo "-- copy solr.xml into ${{SOLR_DATADIR}}" 1>&2
 cp ${{SOLR_HOME}}/server/solr/solr.xml ${{SOLR_DATADIR}}
-echo "-- start solr server" 1>&2
+
+echo "-- creating core ..." 1>&2
+echo "   start solr server" 1>&2
 ${{SOLR_HOME}}/bin/solr start -d ${{SOLR_HOME}}/server -s ${{SOLR_DATADIR}}
-echo "-- create core:${{SOLR_CORE_NAME}}" 1>&2
+
+echo "   create core: ${{SOLR_CORE_NAME}}" 1>&2
 ${{SOLR_HOME}}/bin/solr create_core -c ${{SOLR_CORE_NAME}}
-echo "-- stop solr server" 1>&2
+
+echo "   stop solr server" 1>&2
 ${{SOLR_HOME}}/bin/solr stop
 
+echo "-- ${{SOLR_CORE_NAME}} was created." 1>&2
+
 echo "${{SOLR_HOME}}/bin/solr start -d ${{SOLR_HOME}}/server -s ${{SOLR_DATADIR}}" > solr_start.sh
+chmod u+rx solr_start.sh
 
 cat <<EOF 1>&2
 ================================
@@ -517,7 +546,9 @@ EOF
     with open(def_file_name, "w") as f:
         print(def_str, file=f)
 
-    print(f"%inf:csv_text_solr:make script and definition of fields:{sh_file_name},{def_file_name}", file=sys.stderr)
+    print(f"%inf:csv_text_solr:script and definition of fields:{sh_file_name},{def_file_name}\n" +
+          "                   you must edit and execute those.",
+          file=sys.stderr)
 
 
 def get_field_def(fl_name: str, fl_type: str, multivalued: bool = False, large: bool = False) -> Dict[str, Any]:
